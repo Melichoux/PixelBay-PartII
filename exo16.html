@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,26 +9,34 @@
     /*CSS si nécessaire*/
     </style>
 </head>
-<body>
-    <h1>Exo16</h1>
-   <button id="commande"> Gestion du stock </button>
-    <script>
 
-        const commande = document.getElementById("commande")
-        commande.addEventListener("click",() => { let livraison = number(prompt (`Combien de jeux avez-vous recus aujourd'hui?`))})
+    <body>
+    <h1>Exo16</h1>
+    <button id="commande"> Gestion du stock </button>
+
+    <script>
+        let livraison = "";
+        const commande = document.getElementById("commande");
+        commande.addEventListener("click",() => { livraison = Number(prompt (`Combien de jeux avez-vous recus aujourd'hui?`))
+        }); 
+        /* ATTENTION ne pas déclarer la variable "livraison" dans le event car elle serait en scoop local (càd elle n'existe QUE dans la fonction event) */
+console.log(livraison)
         const capaciteEtagere = 10;
        
-        if ( livraison === 0){
-            alert("Aucun jeu n'a été livré aujourd'hui!")
-        }
-            
-        else if (let calcul = Math.floor((livraison/10)))
+         if ( livraison <0 ) // ATTENTION !!!! On ne peut pas mettre de variable dans une condition.
         {
-            prompt (`Vous avez rempli ${calcul}etageres de jeux videos. Il ne reste aucun jeu en stock.`)
-        }
-        else{
-            prompt(`Vous avez rempli ${calcul} etageres. Il reste ${calcul} jeux videos en stock.`)
+            alert ("Saisie incorrect. Veuillez entrer le nombre de jeux recus.")
+        ;}
+        if ( livraison === 0 ){
+            alert("Aucun jeu n'a été livré aujourd'hui!")
+        ;}
+            
+        else {
+            let calcul = Math.floor(livraison/10);
+            let modulo = livraison%10;
+            alert (`Vous avez rempli ${calcul} etageres. Il reste ${modulo} jeux videos en stock.`);
         }
     </script>
+
 </body>
 </html>

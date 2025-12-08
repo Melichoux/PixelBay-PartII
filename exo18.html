@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendrier PixelBay</title>
+    <style>
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+        .month {
+            border: 2px solid #333;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f0f0f0;
+        }
+        .month h3 {
+            margin-top: 0;
+            color: #d9534f;
+        }
+        .month h4 {
+            font-weight: bold;
+        }
+        .month p {
+            font-size: 14px;
+            color: #666;
+        } 
+    </style>
+</head>
+<body>
+    <h1>Calendrier Promotionnel PixelBay</h1>
+    <div id="calendar" class="calendar"></div>
+    <script>
+        const tableau = [
+            { mois : "Janvier", jeu : "God of War", description : "Lorem ipsum dolor sit amet consectetur."},
+            { mois : "Fevrier", jeu : "Prince of Persia", description : "Lorem ipsum ."},
+            { mois : "Mars", jeu : "Dying Light", description : "Lamet consectetur."},
+            { mois : "Avril", jeu : "Tetris", description : "Lorem ipsum dolor sit consectetur."},
+            { mois : "Mai", jeu : "Flower", description : "Lorem ipsum dolor sit amet consectetur."},
+            { mois : "Juin", jeu : "Space Adventure", description : "Lorem ipsum amet consectetur."},
+            { mois : "Juillet", jeu : "Castle Quest", description : "Lorem ipsum dolor sit."},
+            { mois : "Aout", jeu : "Mystery Island", description : "Lorem ipsum dolor sit amet consectetur."},
+            { mois : "Septembre", jeu : "Robot Wars", description : "Lorem dolor sit amet consectetur."},
+            { mois : "Octobre", jeu : "Snake", description : "Lorem ipsum dolor sit amet consectetur."},
+            { mois : "Novembre", jeu : "Mortal Combat", description : "Lorem ipsum amet consectetur."},
+            { mois : "Decembre", jeu : "Mario Party", description : "Lorem ipsum consectetur."},
+        ]
+        const calendar = document.getElementById("calendar"); // peut etre déclarer a l'exterieur mais si volonté de réutilisation
+tableau.forEach( (element) => { // element correspond a chaque objet du tableau
+
+    const article = document.createElement("div");// permet de créer les cards d'articles
+    article.classList.add ("month")
+    article.innerHTML = ` <h3> ${element.mois} </h3>
+      <h4> 🎮 ${element.jeu} </h4>
+     <p> ${element.description} </p>`
+    
+     calendar.appendChild(article); // permet de "fusionner" la div précédente et le texte html
+
+    
+});
+
+    // Insertion des div dans le DOM
+
+
+    </script>
+</body>
+</html>
