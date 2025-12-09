@@ -2,8 +2,9 @@
 
 ### Objectifs
 
-Je souhaites faire une amélioration du site créé grace a un pack délivrée par la fédération de judo.
+Je souhaites faire une amélioration du site créé grace a un pack délivrée par la fédération de judo d'un club.
 Cela permettra d'avoir une meilleure maitrise du site par un professionnel et ajouter des fonctionnalités absentes du site.
+<!-- Mettre a jour régulierement et mettre des infos comme le debut  -->
 
 ### Points d'améliorations
 

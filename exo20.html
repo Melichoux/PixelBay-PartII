@@ -5,7 +5,7 @@
     <title>Barre de Progression de Scroll chez PixelBay</title>
     <style>
         body {
-            height: 300vh; /* Pour permettre le scroll */
+            height: 300vh; /* Pour permettre le scroll en augmentant le viewport (=100) donc 300vh = 3 x le viewport */
         }
         footer {
             position: fixed;
@@ -24,10 +24,22 @@
 
     <script>
        const scrolling = document.querySelector("footer");
-       scrolling.addEventListener("scroll",(event) => {
-        
+       window.addEventListener("scroll",(event) => {
+// console.log(event);
+// console.log(window.innerHeight);
+/* Demarche à suivre:
+    - il faut recup la hauteur du body en px
+    - obtenir la valeur en % de scroll
+    - appliquer le pourcentage a la largeur de la barre de progression*/
+            let height = window.innerHeight;
+            let position = window.scrollY;
+            
+
        })
-    
+
+
+       console.dir(document.body)
+       
     </script>
 </body>
 </html>
