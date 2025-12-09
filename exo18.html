@@ -52,18 +52,12 @@ tableau.forEach( (element) => { // element correspond a chaque objet du tableau
 
     const article = document.createElement("div");// permet de créer les cards d'articles
     article.classList.add ("month")
-    article.innerHTML = ` <h3> ${element.mois} </h3>
-      <h4> 🎮 ${element.jeu} </h4>
-     <p> ${element.description} </p>`
+    article.innerHTML = // cette ligne doit venir avant l'insertion du texte dans le DOM càd le "appendChild"
+    ` <h3> ${element.mois} </h3><h4> 🎮 ${element.jeu} </h4><p> ${element.description} </p>`
     
-     calendar.appendChild(article); // permet de "fusionner" la div précédente et le texte html
-
-    
+     calendar.appendChild(article); // permet de "fusionner" la div précédente et le texte html, cette ligne vient APRES la ligne du ".innerHTML"
+     // => Insertion des div dans le DOM.
 });
-
-    // Insertion des div dans le DOM
-
-
     </script>
 </body>
 </html>
