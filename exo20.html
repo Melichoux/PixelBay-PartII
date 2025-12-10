@@ -31,13 +31,18 @@
     - il faut recup la hauteur du body en px
     - obtenir la valeur en % de scroll
     - appliquer le pourcentage a la largeur de la barre de progression*/
-            let height = window.innerHeight;
-            let position = window.scrollY;
-            
-
+            let height = document.documentElement.scrollHeight - window.innerHeight; // correspond à la hauteur sur laquelle on peut scroller
+/* Explication du calcul du dessus:
+    -  document.documentElement.scrollHeight = hauteur total du document 
+    -  window.innerHeight = hauteur visible de la fenetre
+Comme il y a deja une fenetre visible à l'ouverture de la page web, c'est une distance sur laquelle on ne scrolle pas d'ou la soustraction entre les deux elements!!!*/
+            let position = window.scrollY; // permet de definir la distance parcouru
+            let pourcentage = (position*100)/height; // produit en croix:autre soluce (position*height)/100
+            console.log(pourcentage);
+            scrolling.style.width = pourcentage + "%"; /* Il faut ajouter le "%" pour que le code soit interpreté en pourcentage 
+            comme en ligne 16 (interpretation de CSS)*/
+            console.log(pourcentage + "%");
        })
-
-
        console.dir(document.body)
        
     </script>

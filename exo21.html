@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulation de Commande</title>
+    <style>
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .result.active {
+            color: green;
+        }
+        article {
+            border: solid 3px aliceblue ;
+        }
+    
+        .hidden{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <article>
+    <h1>Calculateur de Panier PixelBay</h1>
+    <form>
+        <div>
+            <label for="quantity">Quantité</label>
+            <input id="quantity" type="number" min="1"  value="1" />
+        </div>
+        <div>
+            <label for="unitPrice">Prix Unitaire HT</label>
+            <input id="unitPrice" type="number" value="49.99" />
+        </div>
+        <div>
+            <label for="tax">TVA %</label>
+            <input id="tax" type="number" value="20" disabled />
+        </div>
+        <div>
+            <button type="button">Recalculer le panier</button>
+        </div>
+        <div>
+            <label for="totalPrice">Total TTC</label>
+            <input id="totalPrice" type="text" value= "" disabled />
+        </div>
+    </form>
+    <div class="result"></div>
+</article>
+
+    <script>
+        let form = document.querySelector("form")
+        let quantity = parseFloat(document.querySelector("#quantity").value);
+        let unitPrice = parseFloat(document.querySelector("#unitPrice").value);
+        let tax = parseFloat(document.querySelector("#tax").value);
+        let button = document.querySelector("#button");
+        let totalPrice = document.querySelector("#totalPrice");
+        console.log(typeof quantity);
+        totalPrice.value = ((((unitPrice*tax)/100)+ unitPrice) * quantity).toFixed(2); // affiche une valeur par defaut dans le total ttc
+
+console.log("Version avec le target en mettant l'event sur un input normalement")
+        form.addEventListener("change", (event) => {
+            console.log(event.target.value);
+            console.log(typeof tax);
+            // event.preventDefault();
+            totalPrice.value = ((((unitPrice*tax)/100)+ unitPrice) * event.target.value).toFixed(2); // ne pas oublier le ".value" pour afficher le prix dans l'input
+            console.log(quantity);
+            console.log("azer" + totalPrice);
+        })
+
+console.log("Version avec le target en mettant l'event sur un input")
+       
+                    console.log(form.elements)
+
+    </script>
+</body>
+</html>

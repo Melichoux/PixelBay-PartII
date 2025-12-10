@@ -8,10 +8,13 @@
     <button id="button">👍 <span id="compteur"></span> Like</button>
 
     <script>
-        // const btn = document.getElementById("compteur");
+        const btn = document.getElementById("compteur"); /* Attention car si je ne l'a declare pas cela fctionne 
+        MAIS vieux comportement DANGEREUX du DOM qui créé automatiquement les element avec un id*/
         let compt = 0;
         const click = document.getElementById("button");
         click.addEventListener("click",(event) => {
+            console.log(event);
+            console.log(compteur);
             compteur.innerHTML = compt++; // il faut mettre ""="" et pas "+=" pour que le compteur s'accumule et ne s'affiche pas à la suite.
             console.log(click)
         }) 
