@@ -28,17 +28,17 @@
 
             <div>
                 <label for="lastName"></label>
-                <input id="lastName" type="text" placeholder="lastname" name="lastName" minlength="2">
+                <input id="lastName" type="text" placeholder="lastname" name="lastName" >
             </div>
 
             <div>
                 <label for="email"></label>
-                <input id="email" type="email" placeholder="username@gmail.com" required>
+                <input id="email" type="email" placeholder="username@gmail.com" >
             </div>
 
             <div>
                 <label for="pass1"></label>
-                <input id="pass1" type="password" placeholder="password" name="pass1" required>
+                <input id="pass1" type="password" placeholder="password" name="pass1" >
             </div>
 
             <div>
@@ -47,7 +47,7 @@
             </div>
 
             <div>
-                <input id="majeur" type="checkbox" name="majeur" value="majeur" required>
+                <input id="majeur" type="checkbox" name="majeur" value="majeur" >
                 <label for="majeur">Vous devez avoir plus de 18 ans pour vous inscrire</label>
             </div>
 
@@ -59,6 +59,24 @@
     </main>
 
     <script>
+        /* Plan d'attaque de l'exo:
+            - definir le bon event à utiliser entre le input et le keydown,
+            - definir les differentes conditions a appliquer a chaque champ input pour qu'il soit "true" 
+            (pas besoin de le faire dans le HTML si present dans le code JS mais double verif avec le Php dans tous les cas),
+            - appliquer un event pour chaque input,
+            - dans chaque input: un if avec les conditions true et un else pour false, */
+
+            const form.firstName = document.querySelector("#firstName"); // dehors ou dedans l'event??
+            form.firstName.addEventListener((event) => {
+                if (form.firstName.value.length >= 2  ) {
+                    firstName.classList.add("success");
+                    
+                }
+                else{
+                    firstName.classList.add("danger");
+
+                }
+            })
       
     </script>
 </body>
