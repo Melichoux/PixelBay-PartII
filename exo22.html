@@ -23,22 +23,22 @@
         <form method="get" action="#">
             <div>
                 <label for="firstName"></label>
-                <input id="firstName" type="text" placeholder="firstname" name="firstName">
+                <input id="firstName" type="text" placeholder="firstname" name="firstName" minlength="2">
             </div>
 
             <div>
                 <label for="lastName"></label>
-                <input id="lastName" type="text" placeholder="lastname" name="lastName">
+                <input id="lastName" type="text" placeholder="lastname" name="lastName" minlength="2">
             </div>
 
             <div>
                 <label for="email"></label>
-                <input id="email" type="email" placeholder="username@gmail.com">
+                <input id="email" type="email" placeholder="username@gmail.com" required>
             </div>
 
             <div>
                 <label for="pass1"></label>
-                <input id="pass1" type="password" placeholder="password" name="pass1">
+                <input id="pass1" type="password" placeholder="password" name="pass1" required>
             </div>
 
             <div>
@@ -47,7 +47,7 @@
             </div>
 
             <div>
-                <input id="majeur" type="checkbox" name="majeur" value="majeur">
+                <input id="majeur" type="checkbox" name="majeur" value="majeur" required>
                 <label for="majeur">Vous devez avoir plus de 18 ans pour vous inscrire</label>
             </div>
 
@@ -59,7 +59,7 @@
     </main>
 
     <script>
-        // Votre code de validation ici
+      
     </script>
 </body>
 </html>
