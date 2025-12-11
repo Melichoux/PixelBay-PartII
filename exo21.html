@@ -41,6 +41,7 @@
         <div>
             <button type="button">Recalculer le panier</button>
         </div>
+    <!-- il ne faut pas mettre de submit car on ne peut pas le "preventDefault()" car on utilise un event "change" => pour plus de detail voir internet -->
         <div>
             <label for="totalPrice">Total TTC</label>
             <input id="totalPrice" type="text" value= "" disabled />
@@ -50,6 +51,7 @@
 </article>
 
     <script>
+// commit du 10/12
         let form = document.querySelector("form")
         let quantity = parseFloat(document.querySelector("#quantity").value);
         let unitPrice = parseFloat(document.querySelector("#unitPrice").value);
@@ -69,9 +71,55 @@ console.log("Version avec le target en mettant l'event sur un input normalement"
             console.log("azer" + totalPrice);
         })
 
-console.log("Version avec le target en mettant l'event sur un input")
+
+
+
+
+// ------------------------ autres version a reprendre------------------------------
+        // let form = document.querySelector("form")
+        // let button = document.querySelector("#button");
+        // let totalPrice =document.querySelector("#totalPrice").value;
+        
+//         console.log("Version avec le target en mettant l'event sur un input normalement")
+
+// totalPrice.value = ((((unitPrice*tax)/100)+ unitPrice) * quantity).toFixed(2); // affiche une valeur par defaut dans le total ttc
+
+//         form.addEventListener("change", (event) => {
+//         const quantity = parseFloat(document.querySelector("#quantity").value);
+//         const unitPrice = parseFloat(document.querySelector("#unitPrice").value);
+//         const tax = parseFloat(document.querySelector("#tax").value);
+
+//             // quantity = parseFloat(document.querySelector("#quantity").value);
+//             // unitPrice = parseFloat(document.querySelector("#unitPrice").value);
+//             // totalPrice = parseFloat(document.querySelector("#totalPrice").value);
+
+//             console.log(event.target.value);
+//             console.log(typeof tax);
+//             // event.preventDefault();
+//             // totalPrice.value = ((((parseFloat(unitPrice.value)*tax)/100)+ parseFloat(unitPrice.value)) * parseFloat(quantity.value)).toFixed(2); // Version avec PA en integrant les var dans l'event
+
+//             totalPrice.value = ((((unitPrice*tax)/100)+ unitPrice) * event.target.value).toFixed(2); // ne pas oublier le ".value" pour afficher le prix dans l'input
+//             console.log(typeof unitPrice);
+//             console.log(quantity);
+//             console.log("azer" + typeof totalPrice);
+//         })
+
        
-                    console.log(form.elements)
+// // console.log("Version avec le target en mettant l'event sur un form") // a finir
+
+// // totalPrice.value = ((((form.target[1].value*tax)/100)+ unitPrice) * form.target[0].value*tax).toFixed(2); // affiche une valeur par defaut dans le total ttc
+
+// //         form.addEventListener("change", (event) => {
+// //             console.log(form.elements)
+// //             console.log(event.target[0].value);
+// //             console.log(event.target[1].value);
+// //             console.log(typeof tax);
+// //             // event.preventDefault();
+// //             totalPrice.value = ((((event.target[1].value*tax)/100)+ unitPrice) * event.target[0].value).toFixed(2); // ne pas oublier le ".value" pour afficher le prix dans l'input
+// //             console.log(quantity);
+// //             console.log("azer" + totalPrice.value);
+// //         })
+
 
     </script>
 </body>
