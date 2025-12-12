@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <title>Création de Compte PixelBay</title>
     <style>
-        .success {
+        .success {           
             border: 2px solid green;
+        /* ajout de cette propriete pour que l'encadrement se voit pendant la saisie et passe "devant" le contour par defaut */
+            outline-style: solid;
         }
         .danger {
             border: 2px solid red;
+        /* ajout de cette propriete pour que l'encadrement se voit pendant la saisie et passe "devant" le contour par defaut */
+            outline-style: solid;
         }
         .success-checked::before {
             content: "✓ ";
@@ -23,7 +27,7 @@
         <form method="get" action="#">
             <div>
                 <label for="firstName"></label>
-                <input id="firstName" type="text" placeholder="firstname" name="firstName" minlength="2">
+                <input id="firstName" type="text" placeholder="firstname" name="firstName">
             </div>
 
             <div>
@@ -66,18 +70,105 @@
             - appliquer un event pour chaque input,
             - dans chaque input: un if avec les conditions true et un else pour false, */
 
-            const form.firstName = document.querySelector("#firstName"); // dehors ou dedans l'event??
-            form.firstName.addEventListener((event) => {
-                if (form.firstName.value.length >= 2  ) {
-                    firstName.classList.add("success");
-                    
+            const form = document.querySelector("form")
+            const firstName = document.querySelector("#firstName"); // dehors ou dedans l'event??
+            console.log(firstName);
+
+
+
+// ----------------------------   FirstName  -------------------------------------
+            firstName.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
+                console.log(firstName.value)
+                if (firstName.value.length >= 2  && firstName.value.length <= 20) {
+                    // Remplace toutes les classes par success + success-checked
+                    firstName.className = "success success-checked"; /* on ne peut pas utiliser classList.add car a la premiere lettre saisie c'est la class
+                    "danger" qui va prendre le dessus et "success" ne s'affichera pas car classList.add ne remplace pas la class precedente,
+                    ou alors il faut ajouter une ligne classList.remove pour retirer la class precedente*/
+                console.log(firstName);
                 }
                 else{
-                    firstName.classList.add("danger");
-
+                    firstName.className = "danger";
                 }
             })
-      
+
+
+// ----------------------------   LastName  -------------------------------------
+            const lastName = document.querySelector("#lastName")
+             lastName.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
+                console.log(lastName.value)
+                if (lastName.value.length >= 2  && lastName.value.length <= 20) {
+                    lastName.className = "success";   
+                }
+                else{
+                    lastName.className = "danger";
+                }
+            })
+
+            
+// ----------------------------   Email  -------------------------------------
+            const email = document.querySelector("#email")
+             email.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
+                console.log(email.value)
+                if (email.value.length >= 2  && email.value.length <= 20) {
+                    email.className = "success";   
+                }
+                else{
+                    email.className = "danger";
+                }
+            })
+
+
+// ----------------------------   Password  -------------------------------------
+            const pass1 = document.querySelector("#pass1")
+             pass1.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
+                console.log(pass1.value)
+                if (pass1.value.length >= 2  && pass1.value.length <= 20) {
+                    pass1.className = "success";   
+                }
+                else{
+                    pass1.className = "danger";
+                }
+            })
+
+
+
+// ----------------------------   Verif Password  -------------------------------------
+            const pass2 = document.querySelector("#pass2")
+             pass2.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
+                console.log(pass2.value)
+                if (pass2.value !== pass1.value) {
+                    pass2.className = "success";   
+                }
+                else{
+                    pass2.className = "danger";
+                }
+            })
+
+// ----------------------------   CheckBox  -------------------------------------
+             const majeur = document.querySelector("#majeur")
+             majeur.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
+                console.log(majeur.value)
+                if (majeur.value ) {
+                    majeur.className = "success";   
+                }
+                else{
+                    majeur.className = "danger";
+                }
+            })
+           
+
+// ----------------------------   Validation  -------------------------------------
+             const submit = document.querySelector("#submit")
+             submit.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
+                console.log(submit.value)
+                if (submit.value ) {
+                    submit.className = "success";   
+                }
+                else{
+                    submit.className = "danger";
+                }
+            })
+
     </script>
 </body>
 </html>
