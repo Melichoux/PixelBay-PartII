@@ -14,17 +14,20 @@
         /* ajout de cette propriete pour que l'encadrement se voit pendant la saisie et passe "devant" le contour par defaut */
             outline-style: solid;
         }
-        .success-checked::before {
+        .success-checked {   /*ATTENTION ::after ne fonctionnne pas sur un input, il faudra donc l'appliquer sur le label ou un span/p/text
+        nouveauté 2024 proprieté content-visibility a voir sur mdn*/
             content: "✓ ";
             color: green;
         }
+
+
     </style>
 </head>
 <body>
     <main>
         <h1>PixelBay</h1>
         <h2>Création du compte</h2>
-        <form method="get" action="#">
+        <form method="post" action="#">
             <div>
                 <label for="firstName"></label>
                 <input id="firstName" type="text" placeholder="firstname" name="firstName">
@@ -37,7 +40,7 @@
 
             <div>
                 <label for="email"></label>
-                <input id="email" type="email" placeholder="username@gmail.com" >
+                <input id="email" type="email" placeholder="username@gmail.com" required>
             </div>
 
             <div>
@@ -71,22 +74,28 @@
             - dans chaque input: un if avec les conditions true et un else pour false, */
 
             const form = document.querySelector("form")
+            
+            
+            
+            // ----------------------------   FirstName  -------------------------------------
             const firstName = document.querySelector("#firstName"); // dehors ou dedans l'event??
             console.log(firstName);
-
-
-
-// ----------------------------   FirstName  -------------------------------------
-            firstName.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
+             firstName.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
                 console.log(firstName.value)
                 if (firstName.value.length >= 2  && firstName.value.length <= 20) {
                     // Remplace toutes les classes par success + success-checked
-                    firstName.className = "success success-checked"; /* on ne peut pas utiliser classList.add car a la premiere lettre saisie c'est la class
+                    firstName.className = "success";
+                    firstName.parentElement.className = "success-checked" ; // marche pas!!!!! CROTTE!!!!
+                    /* on ne peut pas utiliser classList.add car a la premiere lettre saisie c'est la class
                     "danger" qui va prendre le dessus et "success" ne s'affichera pas car classList.add ne remplace pas la class precedente,
-                    ou alors il faut ajouter une ligne classList.remove pour retirer la class precedente*/
+                    ou alors il faut ajouter une ligne classList.remove pour retirer la class precedente.
+                    exemple:
+                    firstName.classList.remove("danger");
+                    firstName.classList.add("success success-checked");*/
                 console.log(firstName);
                 }
                 else{
+
                     firstName.className = "danger";
                 }
             })
@@ -97,7 +106,8 @@
              lastName.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
                 console.log(lastName.value)
                 if (lastName.value.length >= 2  && lastName.value.length <= 20) {
-                    lastName.className = "success";   
+                    lastName.className = "success success-checked";
+                    
                 }
                 else{
                     lastName.className = "danger";
@@ -109,7 +119,7 @@
             const email = document.querySelector("#email")
              email.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
                 console.log(email.value)
-                if (email.value.length >= 2  && email.value.length <= 20) {
+                if (email.value.length >= 2  && email.value == 20) {
                     email.className = "success";   
                 }
                 else{
@@ -122,7 +132,7 @@
             const pass1 = document.querySelector("#pass1")
              pass1.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
                 console.log(pass1.value)
-                if (pass1.value.length >= 2  && pass1.value.length <= 20) {
+                if (pass1.value.length >= 6 ) {
                     pass1.className = "success";   
                 }
                 else{
@@ -136,19 +146,20 @@
             const pass2 = document.querySelector("#pass2")
              pass2.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
                 console.log(pass2.value)
-                if (pass2.value !== pass1.value) {
+                if (pass2.value === pass1.value) {
                     pass2.className = "success";   
                 }
                 else{
                     pass2.className = "danger";
                 }
+
             })
 
 // ----------------------------   CheckBox  -------------------------------------
              const majeur = document.querySelector("#majeur")
              majeur.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
                 console.log(majeur.value)
-                if (majeur.value ) {
+                if (majeur.Checked) {
                     majeur.className = "success";   
                 }
                 else{
@@ -161,11 +172,15 @@
              const submit = document.querySelector("#submit")
              submit.addEventListener("input",(event) => { // on priviligiera le "change" pour une meilleure performance du code
                 console.log(submit.value)
-                if (submit.value ) {
+                event.preventDefault();
+                if ((firstName.className === "success success-checked") && (lastName.className === "success success-checked") && (email.className === "success") && (pass1.className === "success") && (pass2.className === "success") && (majeur.className === "success")
+
+                 ) {
                     submit.className = "success";   
                 }
                 else{
                     submit.className = "danger";
+                    alert ("Saisie incorrect. Veuillez remplir les champs manquants.");
                 }
             })
 
@@ -173,5 +188,14 @@
 </body>
 </html>
 
+
+<!--  Autres moyens de valider ou non une selection avec du CSS -->
+<!-- input:invalid {
+  border: 2px dashed red;
+}
+
+input:valid {
+  border: 1px solid black;
+} -->
 
  
